@@ -271,6 +271,16 @@ res.send(result)
 
 })
 
+// updat value
+app.put('/instructorUpdatedCasll/:id',async(req,res) =>{
+  const id =req.params.id;
+  console.log(id);
+  const quary = {_id : new ObjectId(id)};
+  const update = {$inc:{enrolled : +1}}
+  const result = await allClassesCollection.updateOne(quary,update)
+  res.send(result)
+})
+
   await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
