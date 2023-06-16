@@ -13,7 +13,7 @@ const veryfyJWT = (req,res,next) =>{
   const authorization = req.headers.authorization;
   
   if (!authorization) {
-    return res.status(401).send({err: true, mesage: 'unauthorized'})
+    return res.status(403).send({err: true, mesage: 'unauthorized'})
   }
   const token = authorization.split(' ')[1];
     jwt.verify(token,process.env.JWT_Token,(err,decoded) =>{
